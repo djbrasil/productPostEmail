@@ -1,0 +1,30 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Contato</title>
+    <!-- Boostrap css chama o css padrão do boostrap -->
+    {% bootstrap_css %}
+</head>
+<body>
+    <!-- Formulario de contato -->
+    <div class="container-sm p-5">
+        <h1>Contato</h1>
+        <!-- Esse boostrap mensagem é responsavel por notificar se a mensagem foi enviada ou não -->
+        {% bootstrap_messages %}
+        <!-- formulario  -->
+        <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            <!-- boostrap form deixa fileds formato boostrap -->
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-success">Enviar Mensagem</button>
+            {% endbuttons %}
+        </form>
+        <a class="btn btn-primary" href="/">voltar</a> 
+    </div> 
+<!-- chama os js padrão do boostrap -->
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>
